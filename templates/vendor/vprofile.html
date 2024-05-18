@@ -20,9 +20,10 @@
                         <div class="user-holder">
                             <h5 class="text-uppercase">Manage Your Restaurant</h5>
 									<!-- My Restaurants Form Start -->
+									<!-- My Restaurants Form Start -->
 									<form action="{% url 'vprofile' %}" method="POST" enctype="multipart/form-data">
-                                        {% csrf_token %}
-										<div class="form-fields-set">
+										{% csrf_token %}
+                                    
 											<ul>
 												<li>
 													<div class="row">
@@ -33,11 +34,9 @@
 																		<li class="gal-img">
 																			<div class="drag-list">
 																				<div class="item-thumb">
-																					{% if profile.profile_picture %}
+																					
 																					<img class="thumbnail" src="{{profile.profile_picture.url}}" alt="Profile Picture">
-																					{% else %}
-																					<img class="thumbnail" src="{% static 'images/default-profile.png' %}" alt="Profile Picture">
-																					{% endif %}
+																					
 																				</div>
 																			</div>
 																		</li>
@@ -49,7 +48,7 @@
 																		{{profile_form.profile_picture}}
 																	</div>
 																</div>
-																<label class="text-danger">{{ profile_form.profile_picture.errors }}</label>
+																<label class="text-danger">{{ profile_form.profile_picture.errors}}</label>
 															</div>
 														</div>
 														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -59,11 +58,9 @@
 																		<li class="gal-img">
 																			<div class="drag-list">
 																				<div class="item-thumb">
-																					{% if profile.cover_photo %}
+																					
 																					<img class="thumbnail" src="{{profile.cover_photo.url}}" alt="Cover Photo">
-																					{% else %}
-																					<img class="thumbnail" src="{% static 'images/default-cover.png' %}" alt="Cover Photo">
-																					{% endif %}
+																					
 																				</div>
 																			</div>
 																		</li>
@@ -76,7 +73,7 @@
 																	</div>
 																	
 																</div>
-																<label class="text-danger">{{ profile_form.cover_photo.errors }}</label>
+																<label class="text-danger">{{ profile_form.cover_photo.errors}}</label>
 															</div>
 														</div>
 														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -99,7 +96,7 @@
 																	</div>
 																	
 																</div>
-																<label class="text-danger">{{ vendor_form.vendor_license.errors }}</label>
+																<label class="text-danger"> {{ profile_form.cover_photo.errors}}</label>
 															</div>
 														</div>
 														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -112,9 +109,11 @@
 															<div class="field-holder">
 																<label>Address *</label>
 																{{profile_form.address}}
-																<small class="text-muted float-right">powered by Google</small>
+																<small class='test-muted float-right'>powered by Google</small>
 															</div>
 														</div>
+
+														
                                                         
 
                                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -167,12 +166,14 @@
 											<div>
 												<div class="field-holder">
 													<div class="payment-holder input-button-loader">
-														<input type="submit" value="Update Restaurant">
+														<input type="submit" value="Update Restaurant" >
+														
 													</div>
 												</div>
 											</div>
 										</div>
 									</form>
+									<!-- My Restaurants Form End -->
 									<!-- My Restaurants Form End -->
                         </div>
                     </div>
