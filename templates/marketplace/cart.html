@@ -39,10 +39,7 @@
 
                                                         <a href="#" class="decrease_cart" data-id="{{ item.fooditem.id }}" id="{{item.id}}" data-url="{% url 'decrease_cart' item.fooditem.id %}" style="margin-right: 28px;"><i class="icon-minus text-color"></i></a>
                                                         <label id="qty-{{item.fooditem.id}}">0</label>
-                                                        <a href="#" class="add_to_cart" data-id="{{ item.fooditem.id }}" data-url="{% url 'add_to_cart' item.fooditem.id %}" onclick="window.location.reload()">
-                                                            <i class="icon-plus4 text-color"></i>
-                                                        </a>
-                                                        
+                                                        <a href="#" class="add_to_cart" data-id="{{ item.fooditem.id }}" data-url="{% url 'add_to_cart' item.fooditem.id %}"><i class="icon-plus4 text-color"></i></a>
                                                         <a href="#" class="delete_cart" data-id="{{ item.id }}" data-url="{% url 'delete_cart' item.id %}"><i class="icon-delete text-color"></i></a>
                                                         
                                                     </div>
@@ -92,16 +89,7 @@
                                                 </span>
                                             </li>
 
-
-                                            <li style="list-style-type: none;">
-                                                Tax
-                                                <span class="price float-right">
-                                                    <span class="currency">$</span>
-                                                    <span id="tax">{{ tax }}</span>
-                                                </span>
-                                            </li>
-
-                                            {% comment %} {% for key, value in tax_dict.items %}
+                                            {% for key, value in tax_dict.items %}
                                                 {% for i, j in value.items %}
                                                     <li style="list-style-type: none;">
                                                         {{ key }} <small>({{ i }}%)</small>
@@ -111,7 +99,7 @@
                                                         </span>
                                                     </li>
                                                 {% endfor %}
-                                            {% endfor %} {% endcomment %}
+                                            {% endfor %}
 
 
                                             <li style="list-style-type: none; font-weight: 600;">
