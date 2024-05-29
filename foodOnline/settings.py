@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'menu',
     'marketplace',
     'customers',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -78,6 +79,7 @@ TEMPLATES = [
                 
                 'marketplace.context_processors.get_cart_counter',
                 'marketplace.context_processors.get_cart_amounts',
+                'accounts.context_processors.get_paypal_client_id',
             ],
         },
     },
@@ -176,7 +178,16 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST ='smtp.gmail.com'
 EMAIL_PORT =587
 EMAIL_HOST_USER ='sdipanshu746@gmail.com' 
-EMAIL_HOST_PASSWORD ="ufiryomeymndzwzi"
+EMAIL_HOST_PASSWORD ="tlhxsbvzsvazbzkf"
 
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'foodOnline Marketplace <sdipanshu746@gmail.com>'
+
+
+
+PAYPAL_CLIENT_ID = config('PAYPAL_CLIENT_ID')
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
+
+RZP_KEY_ID = config('RZP_KEY_ID')
+RZP_KEY_SECRET = config('RZP_KEY_SECRET')
