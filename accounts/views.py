@@ -37,14 +37,12 @@ def check_role_customer(user):
 
 
 
-# Create your views here.
 def registerUser(request):
     if request.user.is_authenticated:
         messages.warning(request, 'You are already logged in!')
         return redirect('dashboard')
     elif request.method == 'POST':
-        print(request.POST)
-        form =UserForm(request.POST)
+        form = UserForm(request.POST)
         if form.is_valid():
             # Create the user using the form
             # password = form.cleaned_data['password']
@@ -62,22 +60,22 @@ def registerUser(request):
             user = User.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email, password=password)
             user.role = User.CUSTOMER
             user.save()
-             # Send verification email
+
+            # Send verification email
             mail_subject = 'Please activate your account'
             email_template = 'accounts/emails/account_verification_email.html'
             send_verification_email(request, user, mail_subject, email_template)
-
-            messages.success(request,'Your account has been registered sucessfully')
+            messages.success(request, 'Your account has been registered sucessfully!')
             return redirect('registerUser')
         else:
             print('invalid form')
             print(form.errors)
     else:
-        form=UserForm()
-    context={
+        form = UserForm()
+    context = {
         'form': form,
     }
-    return render(request,'accounts/registerUser.html',context)
+    return render(request, 'accounts/registerUser.html', context)
 
 
 def registerVendor(request):
@@ -106,11 +104,9 @@ def registerVendor(request):
             vendor.save()
 
             # Send verification email
-             # Send verification email
             mail_subject = 'Please activate your account'
             email_template = 'accounts/emails/account_verification_email.html'
             send_verification_email(request, user, mail_subject, email_template)
-
 
             messages.success(request, 'Your account has been registered sucessfully! Please wait for the approval.')
             return redirect('registerVendor')
@@ -128,6 +124,7 @@ def registerVendor(request):
 
     return render(request, 'accounts/registerVendor.html', context)
 
+
 def activate(request, uidb64, token):
     # Activate the user by setting the is_active status to True
     try:
@@ -144,7 +141,7 @@ def activate(request, uidb64, token):
     else:
         messages.error(request, 'Invalid activation link')
         return redirect('myAccount')
-        
+    
 def login(request):
     if request.user.is_authenticated:
         messages.warning(request, 'You are already logged in!')
@@ -238,7 +235,7 @@ def forgot_password(request):
             return redirect('forgot_password')
     return render(request, 'accounts/forgot_password.html')
 
-    
+   
 
 
 def reset_password_validate(request, uidb64, token):
